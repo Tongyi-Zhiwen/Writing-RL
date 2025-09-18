@@ -18,6 +18,7 @@ The Writing-RL framework consists of three key components:
 ## 🔥 Updates
 
 [2025.09.18] 🌟 We are delighted to release the training [code](https://github.com/Tongyi-Zhiwen/Writing-RL) of our paper. The training dataset and the resulting writer models are coming soon. Stay tuned!
+
 [2025.06.06] 🌟 Our initial paper is available in [Arxiv](https://arxiv.org/abs/2506.05760).
 
 ## Methods
@@ -132,7 +133,7 @@ In the training scripts, you can adjust the following environment variables.
 
 #### Other Tips
 
-* We recommend use wandb to log your experiments and you need to configure your wandb api key in the script.
+* We recommend using wandb to log your experiments and you need to configure your wandb api key in the script.
 * To dynamically monitor the current reference indexes of each training sample, we first execute `scripts/create_index_file.py` to create `index_{experiment_name}.json` in the `running_file` directory. The file contains a mapping of `sample_id` to `current_reference_index` and it will be modified in each trainning step. At the begining of reward computation, the program will read the file to find the current index of the questions and use `reference_list[current_reference_index]` for each sample to construct pairwise comparisons. Afterwards, when some of the model responses beat the current reference, the corresponding `current_reference_index` will add 1 (step towards a better reference) and is finally written to the file. In this way, we implement our `Dynamic Reference Scheduling` framework and we use an external file to log the information to maintain minimal invasive modifications to the original VeRL codebase and can be beneficial for intermediate checking and mannual intervention.
 
 #### Launch Training
@@ -159,5 +160,4 @@ If you find our work helpful, please consider citing our work.
   year={2025}
 }
 ```
-
 
